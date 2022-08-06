@@ -1,0 +1,51 @@
+.border-false {  
+    border: 2px solid #d3d6da;
+}
+
+.border-true {
+    border: 2px solid #7d7d7d;
+}
+
+.green{
+    color: white;
+    background: #6aaa64;
+    border: 2px solid #6aaa64;
+    animation: flip-tile .5s ease-in-out;
+}
+
+@keyframes flip-tile {
+    from {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+.yellow{
+    color: white;
+    background: #c9b458;
+    border: 2px solid #c9b458;
+    animation: flip-tile .5s ease-in-out;
+}
+
+.normal{
+    color: white;
+    background: #4b4b4b;
+    border: 2px solid #4b4b4b;
+    animation: flip-tile .5s ease-in-out;
+}
+
+.word-cell div{
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25rem;
+}
