@@ -1,11 +1,12 @@
 import './Board.css'
-import { useState, useEffect} from 'react';
-import WordRow from './WordRow.js';
-import { checkGuess } from '../../utils/checkGuess';
-import words from '../../utils/words.json';
-import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Popup from './Popup';
+import { useState, useEffect} from 'react'
+import WordRow from '../WordRow/WordRow'
+import { checkGuess } from '../../utils/checkGuess'
+import words from '../../utils/words.jsons'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Popup from '../Popup/Popup'
+
 const Board = () => {
 
     const WordOfTheDay = "HELLO";

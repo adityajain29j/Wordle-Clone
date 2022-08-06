@@ -1,5 +1,6 @@
 import './WordRow.css'
-import WordCell from './WordCell.js'
+import WordCell from '../Wordcell/WordCell'
+
 const WordRow = ({word = '', result}) => {
     return ( 
         <div className='word-row'>
