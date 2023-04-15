@@ -9,7 +9,7 @@ import Popup from '../Popup/Popup'
 
 const Board = () => {
 
-    const WordOfTheDay = "HELLO";
+    const WordOfTheDay = "HELLP";
     const [currentWord,setCurrentWord] = useState('');
     const [guesses,setGuesses] = useState([]);
     const chances = 5;
