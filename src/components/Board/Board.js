@@ -2,14 +2,14 @@ import './Board.css'
 import { useState, useEffect} from 'react'
 import WordRow from '../WordRow/WordRow'
 import { checkGuess } from '../../utils/checkGuess'
-import words from '../../utils/words.jsons'
+import words from '../../utils/words.json'
 import {ToastContainer, toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Popup from '../Popup/Popup'
 
 const Board = () => {
 
-    const WordOfTheDay = "HELLP";
+    const WordOfTheDay = "HELLO";
     const [currentWord,setCurrentWord] = useState('');
     const [guesses,setGuesses] = useState([]);
     const chances = 5;
@@ -66,7 +66,7 @@ const Board = () => {
     }
 
     const handleKeyDown = e => {
-        if (gameState != "Running") {
+        if (gameState !== "Running") {
             return;
         } 
         let pressedKey = String(e.key);
@@ -112,7 +112,7 @@ const Board = () => {
             ))}
             {textStatus !== "You Lost" && <WordRow word = {currentWord}/> }
         
-            {textStatus != "You Lost" && [...Array(chances - guesses.length)].map(chance => (
+            {textStatus !== "You Lost" && [...Array(chances - guesses.length)].map(chance => (
                 <WordRow word = ""/>
             ))}
             
