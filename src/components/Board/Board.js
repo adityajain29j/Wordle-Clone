@@ -8,13 +8,35 @@ import "react-toastify/dist/ReactToastify.css";
 import Popup from "../Popup/Popup";
 
 const Board = () => {
-  const WordOfTheDay = "BOARD";
+  const WORD_OF_THE_DAY = "BOARD";
+  const CHANCES = 6;
+  const CHAR_LIMIT = 5;
+
   const [currentWord, setCurrentWord] = useState("");
   const [guesses, setGuesses] = useState([]);
-  const chances = 5;
-  const [gameState, setGameState] = useState("Running");
+  const [isGameOver, setIsGameOver] = useState(false);
   const [textStatus, setTextStatus] = useState("");
   const [popupState, setPopupState] = useState(false);
+  const [boardStatus, setBoardStatus] = useState([]); 
+
+  useEffect(() => {
+    const didWin =
+      boardStatus.length > 0 &&
+      Object.values(boardStatus[boardStatus.length - 1]).every(
+        (v) => v === "green"
+      );
+    if (guesses.length === CHANCES || didWin) {
+      setTimeout(function () {
+        setIsGameOver(true);
+        setPopupState(true);
+        if (didWin) {
+          setTextStatus("You Won");
+        } else {
+          setTextStatus("You Lost");
+        }
+      }, 600);
+    }
+  }, [guesses, boardStatus]);
 
   const notify = () =>
     toast.error("Please enter a valid word", {
@@ -29,43 +51,28 @@ const Board = () => {
 
   const backspace = () => {
     setCurrentWord((prev) => prev && prev.slice(0, -1));
-    setTextStatus("");
   };
 
   const enter = () => {
-    if (currentWord.length === 5) {
+    if (currentWord.length === CHAR_LIMIT) {
       if (!words.includes(currentWord.toLocaleLowerCase())) {
         notify();
         return;
       }
-
       setGuesses((prev) => [...prev, currentWord]);
-      const result = checkGuess(currentWord, WordOfTheDay);
+      const result = checkGuess(currentWord, WORD_OF_THE_DAY);
+      setBoardStatus((prev) => [...prev, result]);
       setCurrentWord("");
-
-      if (
-        Object.values(result).every((v) => v === "green") &&
-        Object.values(result).length === 5
-      ) {
-        setGameState("Stopped");
-        setTextStatus("You Won");
-        setPopupState(true);
-      } else if (guesses.length === 5) {
-        setGameState("Stopped");
-        setTextStatus("You Lost");
-        setPopupState(true);
-      }
     }
   };
 
   const word = (letter = "") => {
     letter = letter.toLocaleUpperCase();
     setCurrentWord((prev) => (prev.length === 5 ? prev : prev + letter));
-    setTextStatus("");
   };
 
   const handleKeyDown = (e) => {
-    if (gameState !== "Running") {
+    if (isGameOver) {
       return;
     }
     let pressedKey = String(e.key);
@@ -105,24 +112,21 @@ const Board = () => {
         pauseOnHover
       />
       {guesses.map((guess, i) => (
+        <WordRow key={i} word={guess} result={boardStatus[i]} />
+      ))}
+
+      {[...Array(CHANCES - guesses.length)].map((_, i) => (
         <WordRow
           key={i}
-          word={guess}
-          result={checkGuess(guess, WordOfTheDay)}
+          word={i === 0 ? currentWord : ""}          
         />
       ))}
-      {textStatus !== "You Lost" && <WordRow word={currentWord} />}
-
-      {textStatus !== "You Lost" &&
-        [...Array(chances - guesses.length)].map((chance, i) => (
-          <WordRow key={i} word="" />
-        ))}
 
       <Popup
         trigger={popupState}
         setTrigger={setPopupState}
         winStatus={textStatus}
-        wordOfTheDay={WordOfTheDay}
+        wordOfTheDay={WORD_OF_THE_DAY}
       />
     </div>
   );

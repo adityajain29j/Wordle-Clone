@@ -5,7 +5,11 @@ const WordRow = ({ word = "", result }) => {
   return (
     <div className="word-row">
       {Array.from(Array(5)).map((_, i) => (
-        <WordCell key={i} letter={word[i] || ""} result={result ? result[i] : null} />
+        <WordCell
+          key={i}
+          letter={word[i] || ""}
+          result={result ? result[i] : null}
+        />
       ))}
     </div>
   );

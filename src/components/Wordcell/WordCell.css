@@ -1,45 +1,88 @@
 .border-false {
-  border: 2px solid #d3d6da;
+  border: 2px solid var(--clr-border-without-letter);
 }
 
 .border-true {
-  border: 2px solid #7d7d7d;
+  border: 2px solid var(--clr-border-with-letter);
+  animation: bounce var(--bounce-delay) forwards;
 }
 
 .green {
-  color: white;
-  background: #6aaa64;
-  border: 2px solid #6aaa64;
-  animation: flip-tile 0.5s ease-in-out;
+  color: var(--clr-text-colorbackground);
+  background: var(--clr-tile-green);
+  border: 2px solid var(--clr-tile-green);
+  animation: flip-tile var(--flip-time-delay) ease-in-out;
 }
 
 @keyframes flip-tile {
   from {
-    transform: scaleY(1);
+    transform: rotateX(0);
+    color: black;
+    border: 2px solid var(--clr-border-with-letter);
+    background-color: var(--clr-tile-noletter);
   }
-  50% {
-    transform: scaleY(0);
+  45% {
+    transform: rotateX(90deg);
+    color: black;
+    border: 2px solid var(--clr-border-with-letter);
+    background-color: var(--clr-tile-noletter);
+  }
+  55% {
+    transform: rotateX(90deg);
   }
   to {
-    transform: scaleY(1);
+    transform: rotateX(0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  from {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5%);
+  }
+  40% {
+    transform: translateX(10%);
+  }
+  60% {
+    transform: translateX(-10%);
+  }
+  80% {
+    transform: translateX(5%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
 .yellow {
-  color: white;
-  background: #c9b458;
-  border: 2px solid #c9b458;
-  animation: flip-tile 0.5s ease-in-out;
+  color: var(--clr-text-colorbackground);
+  background: var(--clr-tile-yellow);
+  border: 2px solid var(--clr-tile-yellow);
+  animation: flip-tile var(--flip-time-delay) ease-in-out;
 }
 
 .normal {
-  color: white;
-  background: #4b4b4b;
-  border: 2px solid #4b4b4b;
-  animation: flip-tile 0.5s ease-in-out;
+  color: var(--clr-text-colorbackground);
+  background: var(--clr-tile-gray);
+  border: 2px solid var(--clr-tile-gray);
+  animation: flip-tile var(--flip-time-delay) ease-in-out;
 }
 
-.word-cell div {
+.word-cell > div {
   height: 3.5rem;
   width: 3.5rem;
   font-size: 2rem;

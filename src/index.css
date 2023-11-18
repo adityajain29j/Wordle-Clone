@@ -1,3 +1,16 @@
+:root {
+  --flip-time-delay: 0.5s;
+  --bounce-delay: 0.1s;
+  --clr-border-with-letter: #7d7d7d;
+  --clr-border-without-letter: #d3d6da;
+  --clr-tile-green: #6aaa64;
+  --clr-tile-yellow: #c9b458;
+  --clr-tile-gray: #4b4b4b;
+  --clr-tile-noletter: white;
+  --clr-text-nobackground: black;
+  --clr-text-colorbackground: white;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
