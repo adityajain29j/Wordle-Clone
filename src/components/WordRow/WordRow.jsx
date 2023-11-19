@@ -1,3 +1,4 @@
+import React from "react";
 import "./WordRow.css";
 import WordCell from "../Wordcell/WordCell";
 

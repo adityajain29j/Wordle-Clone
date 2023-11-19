@@ -1,4 +1,4 @@
-.popup {
+.popup-window {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,14 +7,58 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.content {
+.content-window {
   position: relative;
-  padding: 30px;
-  height: 100px;
-  width: 200px;
+  padding: 10px 20px 20px 20px;
+  height: 250px;
+  width: 300px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: stretch;
+}
+
+.summary {
+  font-size: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  gap: 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+}
+
+.win-status {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  margin-top: -10px;
+}
+
+.answer {
+  font-size: 28px;
+  font-weight: 600;
+  color: green;
 }

@@ -1,6 +1,7 @@
+import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar.js";
-import Board from "./components/Board/Board.js";
+import Navbar from "./components/Navbar/Navbar";
+import Board from "./components/Board/Board";
 
 function App() {
   return (

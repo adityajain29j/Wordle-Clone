@@ -1,3 +1,4 @@
+import React from "react";
 import "./WordCell.css";
 
 const WordCell = ({ letter = "", result, letterAnimation = "" }) => {  

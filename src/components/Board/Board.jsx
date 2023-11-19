@@ -1,11 +1,12 @@
+import React from "react";
 import "./Board.css";
 import { useState, useEffect } from "react";
 import WordRow from "../WordRow/WordRow";
-import { checkGuess } from "../../utils/checkGuess";
 import words from "../../utils/words.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Popup from "../Popup/Popup";
+import { STATUS, checkGuess } from "../../utils/utils";
 
 const Board = () => {
   const WORD_OF_THE_DAY = "PRUNE";
@@ -42,9 +43,9 @@ const Board = () => {
         setIsGameOver(true);
         setPopupState(true);
         if (didWin) {
-          setTextStatus("You Won");
+          setTextStatus(STATUS.WIN);
         } else {
-          setTextStatus("You Lost");
+          setTextStatus(STATUS.LOSE);
         }
       }, 1000);
     }
@@ -150,6 +151,7 @@ const Board = () => {
         setTrigger={setPopupState}
         winStatus={textStatus}
         wordOfTheDay={WORD_OF_THE_DAY}
+        noOfGuess={guesses.length}
       />
     </div>
   );
