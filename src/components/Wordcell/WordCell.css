@@ -7,11 +7,19 @@
   animation: bounce var(--bounce-delay) forwards;
 }
 
+.shake-letter {
+  animation: shake var(--letter-animation-delay) ease-in-out;
+}
+
+.jump-letter {
+  animation: jump var(--letter-animation-delay) ease-in-out;
+}
+
 .green {
   color: var(--clr-text-colorbackground);
   background: var(--clr-tile-green);
   border: 2px solid var(--clr-tile-green);
-  animation: flip-tile var(--flip-time-delay) ease-in-out;
+  animation: flip-tile var(--letter-animation-delay) ease-in-out;
 }
 
 @keyframes flip-tile {
@@ -51,20 +59,47 @@
   from {
     transform: translateX(0);
   }
-  20% {
-    transform: translateX(-5%);
+  10% {
+    transform: translateX(0);
   }
-  40% {
-    transform: translateX(10%);
-  }
-  60% {
+  15% {
     transform: translateX(-10%);
   }
-  80% {
-    transform: translateX(5%);
+  20% {
+    transform: translateX(15%);
+  }
+  25% {
+    transform: translateX(-15%);
+  }
+  30% {
+    transform: translateX(10%);
+  }
+  35% {
+    transform: translateX(0);
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-60%);
+  }
+  40% {
+    transform: translateY(-60%);
+  }
+  60% {
+    transform: translateY(5%);
+  }
+  80% {
+    transform: translateY(-5%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
@@ -72,14 +107,14 @@
   color: var(--clr-text-colorbackground);
   background: var(--clr-tile-yellow);
   border: 2px solid var(--clr-tile-yellow);
-  animation: flip-tile var(--flip-time-delay) ease-in-out;
+  animation: flip-tile var(--letter-animation-delay) ease-in-out;
 }
 
 .normal {
   color: var(--clr-text-colorbackground);
   background: var(--clr-tile-gray);
   border: 2px solid var(--clr-tile-gray);
-  animation: flip-tile var(--flip-time-delay) ease-in-out;
+  animation: flip-tile var(--letter-animation-delay) ease-in-out;
 }
 
 .word-cell > div {

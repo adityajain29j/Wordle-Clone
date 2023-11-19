@@ -1,5 +1,5 @@
 :root {
-  --flip-time-delay: 0.5s;
+  --letter-animation-delay: 0.5s;
   --bounce-delay: 0.1s;
   --clr-border-with-letter: #7d7d7d;
   --clr-border-without-letter: #d3d6da;

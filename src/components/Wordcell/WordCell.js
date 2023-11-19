@@ -1,13 +1,17 @@
 import "./WordCell.css";
 
-const WordCell = ({ letter = "", result }) => {
+const WordCell = ({ letter = "", result, letterAnimation = "" }) => {  
   let border = "border-true";
   if (!letter) border = "border-false";
   if (result) {
     border = result;
   }
   return (
-    <div className="word-cell">
+    <div
+      className={`word-cell${
+        letter && letterAnimation ? ` ${letterAnimation}` : ""
+      }`}
+    >
       <div className={border}>{letter}</div>
     </div>
   );
