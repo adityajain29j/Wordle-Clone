@@ -10,7 +10,8 @@ import { STATUS, checkGuess } from "../../utils/utils";
 
 const Board = () => {
   const WORD_OF_THE_DAY = "PRUNE";
-  const CHANCES = 6;
+  const FIRST_CHANCE = 6;
+  const SECOND_CHANCE = 11;
   const CHAR_LIMIT = 5;
   const ANIMATIONS = {
     SHAKE_LETTER: "shake-letter",
@@ -26,6 +27,7 @@ const Board = () => {
   const [letterAnimation, setLetterAnimation] = useState("");
   const [disableInteraction, setDisableInteraction] = useState(false);
   const [windIndex, setWinIndex] = useState(-1);
+  const [chances, setChances] = useState(FIRST_CHANCE);
 
   useEffect(() => {
     const didWin =
@@ -38,7 +40,7 @@ const Board = () => {
       setDisableInteraction(true);
       setTimeout(() => setLetterAnimation(ANIMATIONS.JUMP_LETTER), 500);
     }
-    if (didWin || guesses.length === CHANCES) {
+    if (didWin || guesses.length === chances) {
       setTimeout(function () {
         setIsGameOver(true);
         setPopupState(true);
@@ -49,7 +51,7 @@ const Board = () => {
         }
       }, 1000);
     }
-  }, [guesses, boardStatus, ANIMATIONS.JUMP_LETTER]);
+  }, [guesses, boardStatus, ANIMATIONS.JUMP_LETTER, chances]);
 
   const notify = () =>
     toast.error("Please enter a valid word", {
@@ -115,6 +117,13 @@ const Board = () => {
     };
   });
 
+  const takeMoreGuess = () => {
+    if (chances === FIRST_CHANCE) {
+      setChances(SECOND_CHANCE);
+      setIsGameOver(false);
+    }
+  };
+
   return (
     <div className="Board">
       <ToastContainer
@@ -138,7 +147,7 @@ const Board = () => {
         />
       ))}
 
-      {[...Array(CHANCES - guesses.length)].map((_, i) => (
+      {[...Array(chances - guesses.length)].map((_, i) => (
         <WordRow
           key={i}
           word={i === 0 ? currentWord : ""}
@@ -152,6 +161,7 @@ const Board = () => {
         winStatus={textStatus}
         wordOfTheDay={WORD_OF_THE_DAY}
         noOfGuess={guesses.length}
+        takeMoreGuess={takeMoreGuess}
       />
     </div>
   );

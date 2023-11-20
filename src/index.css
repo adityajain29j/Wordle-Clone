@@ -3,6 +3,7 @@
 :root {
   --letter-animation-delay: 0.5s;
   --bounce-delay: 0.1s;
+  --clr-white: white;
   --clr-border-with-letter: #7d7d7d;
   --clr-border-without-letter: #d3d6da;
   --clr-tile-green: #6aaa64;
@@ -11,6 +12,7 @@
   --clr-tile-noletter: white;
   --clr-text-nobackground: black;
   --clr-text-colorbackground: white;
+  --clr-btn-disabled: #3c6339;
 }
 
 body {
