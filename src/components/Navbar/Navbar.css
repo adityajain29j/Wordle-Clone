@@ -1,8 +1,9 @@
 .Navbar {
-  border-bottom: 2px solid #cccccc;
+  border-bottom: 2px solid var(--clr-black);
 }
 
 .Navbar h1 {
-  margin: 10px 0px;
-  font-size: 2rem;
+  margin: 22px 0px;
+  font-size: 72px;
+  font-weight: 600;
 }

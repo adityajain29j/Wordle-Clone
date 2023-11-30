@@ -48,7 +48,7 @@ const Popup = ({
               )}
             </div>
           )}
-          {!shouldShowAnswer && (
+          {winStatus !== STATUS.WIN && !shouldShowAnswer && (
             <div className="btn-cta">
               <div>Your chances are over</div>
               <div className="btn-more-guesses" onClick={takeMoreGuessHandler}>

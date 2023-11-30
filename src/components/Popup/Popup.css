@@ -12,7 +12,7 @@
 
 .content-window {
   position: relative;
-  padding: 10px 20px 20px 20px;
+  padding: 10px;
   width: 280px;
   border-radius: 20px;
   background-color: white;
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  align-self: stretch;
+  align-self: stretch;  
 }
 
 .summary {
@@ -67,19 +67,20 @@
 
 .win-status {
   display: flex;
-  justify-content: center;
-  width: 200px;
+  justify-content: center;  
   font-size: 30px;
   font-weight: 700;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
   margin-top: -10px;
+  align-self: stretch;
 }
 
 .answer {
   font-size: 28px;
   font-weight: 600;
   color: green;
+  letter-spacing: 3px;
 }
 
 .btn-cta {

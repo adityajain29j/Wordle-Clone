@@ -4,14 +4,15 @@
   --letter-animation-delay: 0.5s;
   --bounce-delay: 0.1s;
   --clr-white: white;
-  --clr-border-with-letter: #7d7d7d;
+  --clr-black: black;
+  --clr-border-with-letter: #D4D4D4;
   --clr-border-without-letter: #d3d6da;
   --clr-tile-green: #6aaa64;
   --clr-tile-yellow: #c9b458;
   --clr-tile-gray: #4b4b4b;
-  --clr-tile-noletter: white;
-  --clr-text-nobackground: black;
-  --clr-text-colorbackground: white;
+  --clr-tile-noletter: var(--clr-white);
+  --clr-text-nobackground: rgb(111, 88, 88);
+  --clr-text-colorbackground: var(--clr-white);
   --clr-btn-disabled: #3c6339;
 }
 
