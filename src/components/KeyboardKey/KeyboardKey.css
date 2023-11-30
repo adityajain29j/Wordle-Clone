@@ -1,0 +1,26 @@
+.keyboard-key {
+  display: flex;
+  width: 48px;
+  height: 52px;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-border-with-letter);
+}
+
+.keyboard-key-letter {
+  font-size: 32px;
+}
+
+.keycolor-gray {
+  color: var(--clr-white);
+  background-color: var(--clr-tile-gray);
+}
+.keycolor-yellow {
+  color: var(--clr-white);
+  background-color: var(--clr-tile-yellow);
+}
+.keycolor-green {
+  color: var(--clr-white);
+  background-color: var(--clr-tile-green);
+}

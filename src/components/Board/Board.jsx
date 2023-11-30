@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Popup from "../Popup/Popup";
 import { STATUS, checkGuess } from "../../utils/utils";
+import Keyboard from "../Keyboard/Keyboard";
 
 const Board = () => {
   const WORD_OF_THE_DAY = "PRUNE";
@@ -17,6 +18,8 @@ const Board = () => {
     SHAKE_LETTER: "shake-letter",
     JUMP_LETTER: "jump-letter",
   };
+
+  const [keyboardKeyColors, setKeyboardKeyColors] = useState({});
 
   const [currentWord, setCurrentWord] = useState("");
   const [guesses, setGuesses] = useState([]);
@@ -79,7 +82,12 @@ const Board = () => {
         return;
       }
       setGuesses((prev) => [...prev, currentWord]);
-      const result = checkGuess(currentWord, WORD_OF_THE_DAY);
+      const result = checkGuess(
+        currentWord,
+        WORD_OF_THE_DAY,
+        keyboardKeyColors,
+        setKeyboardKeyColors
+      );
       setBoardStatus((prev) => [...prev, result]);
       setCurrentWord("");
     }
@@ -154,6 +162,8 @@ const Board = () => {
           letterAnimation={letterAnimation}
         />
       ))}
+
+      <Keyboard keyColors={keyboardKeyColors} />
 
       <Popup
         trigger={popupState}

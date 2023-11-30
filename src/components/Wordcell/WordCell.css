@@ -110,7 +110,7 @@
   animation: flip-tile var(--letter-animation-delay) ease-in-out;
 }
 
-.normal {
+.gray {
   color: var(--clr-text-colorbackground);
   background: var(--clr-tile-gray);
   border: 2px solid var(--clr-tile-gray);
