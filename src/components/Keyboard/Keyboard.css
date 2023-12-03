@@ -6,15 +6,7 @@
   margin-top: 56px;
 }
 
-.keyboard-toprow {
-  display: flex;
-  gap: 8px;
-}
-.keyboard-middlerow {
-  display: flex;
-  gap: 8px;
-}
-.keyboard-bottomrow {
+.keyboard-key-row {
   display: flex;
   gap: 8px;
 }

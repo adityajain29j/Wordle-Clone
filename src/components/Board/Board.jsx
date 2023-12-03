@@ -72,15 +72,17 @@ const Board = () => {
   };
 
   const enter = () => {
+    setDisableInteraction(true);
+    setTimeout(() => setDisableInteraction(false), 500);
+
+    if (!words.includes(currentWord.toLocaleLowerCase())) {
+      setLetterAnimation(ANIMATIONS.SHAKE_LETTER);
+      setTimeout(() => setLetterAnimation(""), 500);
+      notify();
+      return;
+    }
+
     if (currentWord.length === CHAR_LIMIT) {
-      setDisableInteraction(true);
-      setTimeout(() => setDisableInteraction(false), 500);
-      if (!words.includes(currentWord.toLocaleLowerCase())) {
-        setLetterAnimation(ANIMATIONS.SHAKE_LETTER);
-        setTimeout(() => setLetterAnimation(""), 500);
-        notify();
-        return;
-      }
       setGuesses((prev) => [...prev, currentWord]);
       const result = checkGuess(
         currentWord,
@@ -94,8 +96,12 @@ const Board = () => {
   };
 
   const word = (letter = "") => {
-    letter = letter.toLocaleUpperCase();
-    setCurrentWord((prev) => (prev.length === 5 ? prev : prev + letter));
+    if (letter === "↵") enter();
+    else if (letter === "←") backspace();
+    else {
+      letter = letter.toLocaleUpperCase();
+      setCurrentWord((prev) => (prev.length === 5 ? prev : prev + letter));
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -163,7 +169,7 @@ const Board = () => {
         />
       ))}
 
-      <Keyboard keyColors={keyboardKeyColors} />
+      <Keyboard keyColors={keyboardKeyColors} clickLetter={word} />
 
       <Popup
         trigger={popupState}

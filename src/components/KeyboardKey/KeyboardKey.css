@@ -6,10 +6,17 @@
   align-items: center;
   justify-content: center;
   background-color: var(--clr-border-with-letter);
+  transition: .2s ease-in-out;
 }
 
 .keyboard-key-letter {
   font-size: 32px;
+}
+
+.keyboard-key:hover {
+  cursor: pointer;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
 }
 
 .keycolor-gray {
