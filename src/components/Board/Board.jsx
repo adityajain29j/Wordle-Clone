@@ -2,15 +2,28 @@ import React from "react";
 import "./Board.css";
 import { useState, useEffect } from "react";
 import WordRow from "../WordRow/WordRow";
-import words from "../../utils/words.json";
+import WORDS from "../../utils/words.json";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Popup from "../Popup/Popup";
 import { STATUS, checkGuess } from "../../utils/utils";
 import Keyboard from "../Keyboard/Keyboard";
 
+function getWordOfTheDay() {
+  const startDate = new Date(2025, 0, 1); // Jan 1, 2025 (set your own start)
+  const today = new Date();
+
+  // Calculate days since start date
+  const dayIndex = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+
+  // Pick word deterministically (same word for all users that day)
+  const word = WORDS[dayIndex % WORDS.length];
+
+  return word.toUpperCase();
+}
+
 const Board = () => {
-  const WORD_OF_THE_DAY = "PRUNE";
+  const WORD_OF_THE_DAY = getWordOfTheDay();
   const FIRST_CHANCE = 6;
   const SECOND_CHANCE = 11;
   const CHAR_LIMIT = 5;
@@ -75,7 +88,7 @@ const Board = () => {
     setDisableInteraction(true);
     setTimeout(() => setDisableInteraction(false), 500);
 
-    if (!words.includes(currentWord.toLocaleLowerCase())) {
+    if (!WORDS.includes(currentWord.toLocaleLowerCase())) {
       setLetterAnimation(ANIMATIONS.SHAKE_LETTER);
       setTimeout(() => setLetterAnimation(""), 500);
       notify();
